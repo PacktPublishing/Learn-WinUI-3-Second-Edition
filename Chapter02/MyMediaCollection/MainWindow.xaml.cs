@@ -120,9 +120,9 @@ namespace MyMediaCollection
             {
                 Title = "My Media Collection",
                 Content = "Adding items to the collection is not yet supported.",
-                CloseButtonText = "OK"
+                CloseButtonText = "OK",
+                XamlRoot = Content.XamlRoot
             };
-            dialog.XamlRoot = this.Content.XamlRoot;
             await dialog.ShowAsync();
         }
     }
