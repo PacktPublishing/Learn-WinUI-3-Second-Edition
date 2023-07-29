@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel>
@@ -69,6 +70,12 @@
                 Margin="4,0">
             <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
+                <Button Command="{x:Bind ViewModel.SendToastCommand}"
+                        Content="Send Notification"
+                        Margin="8,8,0,8"/>
+                <Button Command="{x:Bind ViewModel.SendToastWithTextCommand}"
+                        Content="Send Notification with Text"
+                        Margin="8,8,0,8"/>
                 <Button Command="{x:Bind ViewModel.AddEditCommand}"
                     Content="Add/Edit Item"
                     Margin="8,8,0,8"/>
@@ -77,5 +84,6 @@
                     Margin="8"/>
             </StackPanel>
         </Border>
+        <InfoBar x:Name="notifyInfoBar" Grid.Row="3"/>
     </Grid>
 </Page>

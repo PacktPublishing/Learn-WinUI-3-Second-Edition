@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Input;
+using MyMediaCollection.Helpers;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Collections.ObjectModel;
@@ -98,5 +99,23 @@ namespace MyMediaCollection.ViewModels
         }
 
         private bool CanDeleteItem() => SelectedMediaItem != null;
+
+        [RelayCommand]
+        private void SendToast()
+        {
+            if (ToastWithAvatar.SendToast())
+                NotificationShared.ToastSentSuccessfully();
+            else
+                NotificationShared.CouldNotSendToast();
+        }
+
+        [RelayCommand]
+        private void SendToastWithText()
+        {
+            if (ToastWithText.SendToast())
+                NotificationShared.ToastSentSuccessfully();
+            else
+                NotificationShared.CouldNotSendToast();
+        }
     }
 }
