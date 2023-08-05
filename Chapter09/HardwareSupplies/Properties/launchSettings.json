@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HardwareSupplies (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "HardwareSupplies (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
