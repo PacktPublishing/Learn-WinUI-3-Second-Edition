@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "XamlDebugging (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "XamlDebugging (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
