@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BlazorTasksHost (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BlazorTasksHost (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
