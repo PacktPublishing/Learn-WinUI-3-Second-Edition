@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">$(OverrideTargetFrameworks)</TargetFrameworks>
+		<SingleProject>true</SingleProject>
+		<OutputType>Exe</OutputType>
+		<!-- Display name -->
+		<ApplicationTitle>UnoMediaCollection</ApplicationTitle>
+		<!-- App Identifier -->
+		<ApplicationId>com.learnwinui3.UnoMediaCollection</ApplicationId>
+		<ApplicationIdGuid>E081709F-8906-47DA-8BB2-B3959AA93CB7</ApplicationIdGuid>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<AndroidManifest>Android\AndroidManifest.xml</AndroidManifest>
+
+		<!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 -->
+		<!-- <MtouchExtraArgs Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> -->
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'maccatalyst'">True</UseInterpreter>
+		<IsUnoHead>true</IsUnoHead>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Uno.WinUI" />
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<PackageReference Include="Uno.Extensions.Configuration" />
+		<PackageReference Include="Uno.Extensions.Http" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
+		<PackageReference Include="Uno.Extensions.Toolkit.WinUI"/>
+		<PackageReference Include="Uno.Toolkit.WinUI" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
+		<PackageReference Include="Uno.Extensions.Logging.OSLog" />
+		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Condition="'$(Configuration)'=='Debug'" />
+	</ItemGroup>
+	<Choose>
+		<When Condition="$(IsAndroid)">
+			<ItemGroup>
+				<PackageReference Include="Xamarin.Google.Android.Material" />
+				<PackageReference Include="Uno.UniversalImageLoader" />
+			</ItemGroup>
+			<ItemGroup>
+				<AndroidEnvironment Include="Android/environment.conf" />
+			</ItemGroup>
+		</When>
+	</Choose>
+	<ItemGroup>
+		<ProjectReference Include="..\UnoMediaCollection\UnoMediaCollection.csproj" />
+		<ProjectReference Include="..\UnoMediaCollection.DataContracts\UnoMediaCollection.DataContracts.csproj" />
+	</ItemGroup>
+	<Import Project="..\UnoMediaCollection.Base\base.props" />
+</Project>

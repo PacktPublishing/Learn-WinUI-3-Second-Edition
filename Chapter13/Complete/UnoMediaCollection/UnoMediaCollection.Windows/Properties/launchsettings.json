@@ -1,0 +1,10 @@
+{
+  "profiles": {
+	"UnoMediaCollection.Windows (Package)": {
+	  "commandName": "MsixPackage"
+	},
+	"UnoMediaCollection.Windows (Unpackaged)": {
+	  "commandName": "Project"
+	}
+  }
+}
