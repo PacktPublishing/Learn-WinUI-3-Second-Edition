@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnoMediaCollection.Interfaces
+﻿namespace UnoMediaCollection.Interfaces
 {
     public interface INavigationService
     {
