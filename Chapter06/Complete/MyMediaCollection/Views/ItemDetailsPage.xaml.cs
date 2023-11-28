@@ -34,7 +34,7 @@ namespace MyMediaCollection.Views
 
         public ItemDetailsViewModel ViewModel;
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -42,7 +42,7 @@ namespace MyMediaCollection.Views
 
             if (itemId > 0)
             {
-                ViewModel.InitializeItemDetailData(itemId);
+                await ViewModel.InitializeItemDetailDataAsync(itemId);
             }
         }
     }

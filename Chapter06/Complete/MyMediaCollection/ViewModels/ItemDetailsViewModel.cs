@@ -41,10 +41,29 @@ namespace MyMediaCollection.ViewModels
             PopulateLists();
         }
 
-        public void InitializeItemDetailData(int itemId)
+        public async Task InitializeItemDetailDataAsync(int itemId)
         {
             _selectedItemId = itemId;
+            await PopulateExistingItemAsync(_dataService);
             IsDirty = false;
+        }
+
+        private async Task PopulateExistingItemAsync(IDataService dataService)
+        {
+            if (_selectedItemId > 0)
+            {
+                var item = await _dataService.GetItemAsync(_selectedItemId);
+                Mediums.Clear();
+
+                foreach (string medium in dataService.GetMediums(item.MediaType).Select(m => m.Name))
+                    Mediums.Add(medium);
+
+                _itemId = item.Id;
+                ItemName = item.Name;
+                SelectedLocation = item.Location.ToString();
+                SelectedItemType = item.MediaType.ToString();
+                SelectedMedium = item.MediumInfo.Name;
+            }
         }
 
         private void PopulateLists()
